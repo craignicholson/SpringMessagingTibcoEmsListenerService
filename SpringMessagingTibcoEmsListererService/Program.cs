@@ -1,25 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Program.cs" company="Craig">
+//   MIT
+// </copyright>
+// <summary>
+//   Defines the Program type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace SpringMessagingTibcoEmsListererService
+namespace SpringMessagingTibcoEmsListenerService
 {
-    static class Program
+    using System.ServiceProcess;
+
+    /// <summary>
+    /// The EMS Listener Service
+    /// </summary>
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static void Main()
+        public static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
-            {
-                new Service1()
-            };
-            ServiceBase.Run(ServicesToRun);
+            var servicesToRun = new ServiceBase[]
+                                              {
+                                                  new EmsListenerService()
+                                              };
+            ServiceBase.Run(servicesToRun);
         }
     }
 }
